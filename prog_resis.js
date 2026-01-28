@@ -23,21 +23,30 @@ if(mat === 'cobre'){
     return 'material inválido'
 }
 }
+    let resposta = document.getElementById('resposta')
+    let calcular = document.getElementById('calcular')
 
-function principal(){
-    let material = 'cobre' // cobre, aluminio
-    let resistencia = 0.0
-    let comprimento = 1000
-    let area = 6.0
+    calcular.addEventListener('click', ()=>{
+        let material = document.getElementById('material').value
+        let resistencia = 0.0
+        let comprimento = Number(document.getElementById('comprimento').value)
+        let area = Number(document.getElementById('area').value)
 
-    let resposta = ''
-
-    let mat = vertipomat(material)
-    console.log(mat)
-
-    resistencia = calcularResistencia(comprimento, area, mat)
-    console.log(`A resistencia do condutor é ${resistencia.toFixed(3)} Ω`)
     
-}
+        let mat = vertipomat(material)
+        console.log(mat)
+    
+        resistencia = calcularResistencia(comprimento, area, mat)
+        console.log(`A resistencia do condutor é ${resistencia.toFixed(3)} Ω`)
+
+        resposta.innerHTML = ''
+        resposta.innerHTML += `A resistencia do condutor é ${resistencia.toFixed(3)} Ω`
+        resposta.style.fontSize = '2rem'
+        resposta.style.fontWeight = 'bold'
+        resposta.style.fontFamily = 'Verdana'
+
+        resposta.innerHTML += '<hr>'
+    })
+
  
-principal()
+    // a função principal foi substituida por uma arroe function () =>
